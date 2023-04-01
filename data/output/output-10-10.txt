@@ -1,0 +1,4 @@
+max_by_category: 8 8 9 8 4 1 5 7 9 9 
+2 3 1 5 
+total: 4
+
