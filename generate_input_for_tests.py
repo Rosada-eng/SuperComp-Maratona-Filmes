@@ -2,8 +2,9 @@ import subprocess
 import os
 import time
 import json
+import numpy as np
 
-numbers_of_movies = [10, 20, 25, 30, 40, 50, 60, 70, 80, 90, 100, 200, 1000, 10000]
+numbers_of_movies = np.arange(0, 1000, 10)
 numbers_of_categories = [3, 4, 6, 8, 10]
 
 list_of_tests = []
@@ -48,8 +49,8 @@ def generate_output_for_tests():
             end = time.perf_counter()
 
             results.append({
-                "n": test[0],
-                "k": test[1],
+                "n": str(test[0]),
+                "k": str(test[1]),
                 "time": end - start,
             })
 
