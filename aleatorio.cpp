@@ -10,16 +10,16 @@ using namespace std;
 
 bool DEBUG = false; // VARIABLE TO PRINT DEBUG MESSAGES
 
-struct movie {
+struct Movie {
     int id;
     int start;
     int end;
     int category;
 };
 
-void read_movies_booking(int size, vector<movie> &book) {
+void read_movies_booking(int size, vector<Movie> &book) {
     for (int i = 0; i < size; i++) {
-        movie m;
+        Movie m;
         m.id = i;
         cin >> m.start;
         cin >> m.end;
@@ -39,11 +39,11 @@ void read_movies_booking(int size, vector<movie> &book) {
     }
 }
 
-void sort_book_by_ending_time(vector<movie> &book, vector<int> &sorting_list) {
+void sort_book_by_ending_time(vector<Movie> &book, vector<int> &sorting_list) {
     sort(sorting_list.begin(), sorting_list.end(), [&](int i, int j) { return book[i].end < book[j].end; });
 }
 
-void book_a_movie(vector<movie> &book, vector<int> &movies_booked, vector<int> &categories_booked, int movie_id) {
+void book_a_movie(vector<Movie> &book, vector<int> &movies_booked, vector<int> &categories_booked, int movie_id) {
     movies_booked.push_back(movie_id);
     categories_booked.push_back(book[movie_id].category);
 }
@@ -77,7 +77,7 @@ int get_random_index(int min, int max) {
     return random_index;
 }
 
-bool is_movie_available(vector<int> &movies_booked, vector<int> &categories_booked, vector<int> &categories_max_size, vector<movie> &book, int movie_id, int last_seen_finishes_at) {
+bool is_movie_available(vector<int> &movies_booked, vector<int> &categories_booked, vector<int> &categories_max_size, vector<Movie> &book, int movie_id, int last_seen_finishes_at) {
     // checa se o filme já não foi assistido
     bool movie_is_taken = find(movies_booked.begin(), movies_booked.end(), movie_id) != movies_booked.end();
 
@@ -116,7 +116,7 @@ bool is_movie_available(vector<int> &movies_booked, vector<int> &categories_book
 }
 
 int main() {
-    vector<movie> book;
+    vector<Movie> book;
     int n = 0;
     int k = 0;
 
