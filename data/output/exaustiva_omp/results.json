@@ -1,0 +1,142 @@
+[
+  {
+    "n": "10",
+    "k": "3",
+    "time": 0.0030915000024833716,
+    "n_selecionados": 4,
+    "tempo_tela": 9
+  },
+  {
+    "n": "10",
+    "k": "4",
+    "time": 0.002426999999443069,
+    "n_selecionados": 6,
+    "tempo_tela": 16
+  },
+  {
+    "n": "10",
+    "k": "6",
+    "time": 0.0024340000018128194,
+    "n_selecionados": 5,
+    "tempo_tela": 8
+  },
+  {
+    "n": "10",
+    "k": "8",
+    "time": 0.005429799995908979,
+    "n_selecionados": 6,
+    "tempo_tela": 15
+  },
+  {
+    "n": "10",
+    "k": "10",
+    "time": 0.00504930000170134,
+    "n_selecionados": 6,
+    "tempo_tela": 14
+  },
+  {
+    "n": "20",
+    "k": "3",
+    "time": 0.027423400002589915,
+    "n_selecionados": 6,
+    "tempo_tela": 11
+  },
+  {
+    "n": "20",
+    "k": "4",
+    "time": 0.03601570000319043,
+    "n_selecionados": 7,
+    "tempo_tela": 15
+  },
+  {
+    "n": "20",
+    "k": "6",
+    "time": 0.026515799996559508,
+    "n_selecionados": 8,
+    "tempo_tela": 15
+  },
+  {
+    "n": "20",
+    "k": "8",
+    "time": 0.02454579999903217,
+    "n_selecionados": 6,
+    "tempo_tela": 15
+  },
+  {
+    "n": "20",
+    "k": "10",
+    "time": 0.02018569999927422,
+    "n_selecionados": 7,
+    "tempo_tela": 12
+  },
+  {
+    "n": "25",
+    "k": "3",
+    "time": 0.32853170000453247,
+    "n_selecionados": 5,
+    "tempo_tela": 15
+  },
+  {
+    "n": "25",
+    "k": "4",
+    "time": 0.4209899999987101,
+    "n_selecionados": 8,
+    "tempo_tela": 17
+  },
+  {
+    "n": "25",
+    "k": "6",
+    "time": 0.45276149999699555,
+    "n_selecionados": 8,
+    "tempo_tela": 19
+  },
+  {
+    "n": "25",
+    "k": "8",
+    "time": 0.34517679999407846,
+    "n_selecionados": 8,
+    "tempo_tela": 18
+  },
+  {
+    "n": "25",
+    "k": "10",
+    "time": 0.4058939000024111,
+    "n_selecionados": 9,
+    "tempo_tela": 20
+  },
+  {
+    "n": "30",
+    "k": "3",
+    "time": 29.15959770000336,
+    "n_selecionados": 7,
+    "tempo_tela": 13
+  },
+  {
+    "n": "30",
+    "k": "4",
+    "time": 29.334836299996823,
+    "n_selecionados": 10,
+    "tempo_tela": 20
+  },
+  {
+    "n": "30",
+    "k": "6",
+    "time": 27.403104899996833,
+    "n_selecionados": 10,
+    "tempo_tela": 20
+  },
+  {
+    "n": "30",
+    "k": "8",
+    "time": 30.870394300000044,
+    "n_selecionados": 10,
+    "tempo_tela": 21
+  },
+  {
+    "n": "30",
+    "k": "10",
+    "time": 36.52996079999866,
+    "n_selecionados": 8,
+    "tempo_tela": 19
+  }
+]

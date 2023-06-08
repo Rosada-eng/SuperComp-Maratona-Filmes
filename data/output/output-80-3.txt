@@ -1,4 +1,0 @@
-max_by_category: 3 3 2 
-38 3 5 76 63 60 50 13 
-total: 8
-

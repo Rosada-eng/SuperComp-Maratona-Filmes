@@ -1,0 +1,317 @@
+[
+  {
+    "n": "10",
+    "k": "3",
+    "time": 0.0035501000020303763,
+    "n_selecionados": 4,
+    "tempo_tela": 13
+  },
+  {
+    "n": "10",
+    "k": "4",
+    "time": 0.0034790999998222105,
+    "n_selecionados": 5,
+    "tempo_tela": 18
+  },
+  {
+    "n": "10",
+    "k": "6",
+    "time": 0.004153100002440624,
+    "n_selecionados": 5,
+    "tempo_tela": 15
+  },
+  {
+    "n": "10",
+    "k": "8",
+    "time": 0.0039403999981004745,
+    "n_selecionados": 7,
+    "tempo_tela": 25
+  },
+  {
+    "n": "10",
+    "k": "10",
+    "time": 0.0028758999978890643,
+    "n_selecionados": 6,
+    "tempo_tela": 24
+  },
+  {
+    "n": "20",
+    "k": "3",
+    "time": 0.0025451000037719496,
+    "n_selecionados": 5,
+    "tempo_tela": 20
+  },
+  {
+    "n": "20",
+    "k": "4",
+    "time": 0.0029199999989941716,
+    "n_selecionados": 7,
+    "tempo_tela": 21
+  },
+  {
+    "n": "20",
+    "k": "6",
+    "time": 0.002568899995821994,
+    "n_selecionados": 9,
+    "tempo_tela": 32
+  },
+  {
+    "n": "20",
+    "k": "8",
+    "time": 0.0023905999987618998,
+    "n_selecionados": 6,
+    "tempo_tela": 18
+  },
+  {
+    "n": "20",
+    "k": "10",
+    "time": 0.002529800003685523,
+    "n_selecionados": 6,
+    "tempo_tela": 22
+  },
+  {
+    "n": "25",
+    "k": "3",
+    "time": 0.002504700001736637,
+    "n_selecionados": 5,
+    "tempo_tela": 21
+  },
+  {
+    "n": "25",
+    "k": "4",
+    "time": 0.003606500002206303,
+    "n_selecionados": 7,
+    "tempo_tela": 26
+  },
+  {
+    "n": "25",
+    "k": "6",
+    "time": 0.004773099994054064,
+    "n_selecionados": 6,
+    "tempo_tela": 27
+  },
+  {
+    "n": "25",
+    "k": "8",
+    "time": 0.002553599995735567,
+    "n_selecionados": 8,
+    "tempo_tela": 29
+  },
+  {
+    "n": "25",
+    "k": "10",
+    "time": 0.0025095000019064173,
+    "n_selecionados": 7,
+    "tempo_tela": 24
+  },
+  {
+    "n": "30",
+    "k": "3",
+    "time": 0.0025935000012395903,
+    "n_selecionados": 7,
+    "tempo_tela": 21
+  },
+  {
+    "n": "30",
+    "k": "4",
+    "time": 0.003041199997824151,
+    "n_selecionados": 8,
+    "tempo_tela": 30
+  },
+  {
+    "n": "30",
+    "k": "6",
+    "time": 0.004564999995636754,
+    "n_selecionados": 8,
+    "tempo_tela": 31
+  },
+  {
+    "n": "30",
+    "k": "8",
+    "time": 0.002844100003130734,
+    "n_selecionados": 6,
+    "tempo_tela": 19
+  },
+  {
+    "n": "30",
+    "k": "10",
+    "time": 0.0023097000012057833,
+    "n_selecionados": 5,
+    "tempo_tela": 17
+  },
+  {
+    "n": "100",
+    "k": "3",
+    "time": 0.0024579000019002706,
+    "n_selecionados": 5,
+    "tempo_tela": 14
+  },
+  {
+    "n": "100",
+    "k": "4",
+    "time": 0.002337500001885928,
+    "n_selecionados": 8,
+    "tempo_tela": 31
+  },
+  {
+    "n": "100",
+    "k": "6",
+    "time": 0.0033428999959141947,
+    "n_selecionados": 7,
+    "tempo_tela": 25
+  },
+  {
+    "n": "100",
+    "k": "8",
+    "time": 0.003631700004916638,
+    "n_selecionados": 9,
+    "tempo_tela": 33
+  },
+  {
+    "n": "100",
+    "k": "10",
+    "time": 0.0029691999952774495,
+    "n_selecionados": 10,
+    "tempo_tela": 37
+  },
+  {
+    "n": "1000",
+    "k": "3",
+    "time": 0.006352700002025813,
+    "n_selecionados": 6,
+    "tempo_tela": 15
+  },
+  {
+    "n": "1000",
+    "k": "4",
+    "time": 0.007292900001630187,
+    "n_selecionados": 10,
+    "tempo_tela": 35
+  },
+  {
+    "n": "1000",
+    "k": "6",
+    "time": 0.006290400000580121,
+    "n_selecionados": 8,
+    "tempo_tela": 32
+  },
+  {
+    "n": "1000",
+    "k": "8",
+    "time": 0.0070687999977963045,
+    "n_selecionados": 8,
+    "tempo_tela": 31
+  },
+  {
+    "n": "1000",
+    "k": "10",
+    "time": 0.009229999996023253,
+    "n_selecionados": 8,
+    "tempo_tela": 31
+  },
+  {
+    "n": "10000",
+    "k": "3",
+    "time": 0.05024989999947138,
+    "n_selecionados": 7,
+    "tempo_tela": 16
+  },
+  {
+    "n": "10000",
+    "k": "4",
+    "time": 0.04458880000311183,
+    "n_selecionados": 9,
+    "tempo_tela": 20
+  },
+  {
+    "n": "10000",
+    "k": "6",
+    "time": 0.042361500003607944,
+    "n_selecionados": 10,
+    "tempo_tela": 24
+  },
+  {
+    "n": "10000",
+    "k": "8",
+    "time": 0.04489370000374038,
+    "n_selecionados": 9,
+    "tempo_tela": 32
+  },
+  {
+    "n": "10000",
+    "k": "10",
+    "time": 0.04238880000048084,
+    "n_selecionados": 10,
+    "tempo_tela": 31
+  },
+  {
+    "n": "100000",
+    "k": "3",
+    "time": 0.4301791000034427,
+    "n_selecionados": 8,
+    "tempo_tela": 18
+  },
+  {
+    "n": "100000",
+    "k": "4",
+    "time": 0.3865579000048456,
+    "n_selecionados": 9,
+    "tempo_tela": 22
+  },
+  {
+    "n": "100000",
+    "k": "6",
+    "time": 0.33954500000254484,
+    "n_selecionados": 11,
+    "tempo_tela": 32
+  },
+  {
+    "n": "100000",
+    "k": "8",
+    "time": 0.37457269999868004,
+    "n_selecionados": 6,
+    "tempo_tela": 16
+  },
+  {
+    "n": "100000",
+    "k": "10",
+    "time": 0.34398979999969015,
+    "n_selecionados": 6,
+    "tempo_tela": 15
+  },
+  {
+    "n": "1000000",
+    "k": "3",
+    "time": 3.721941000003426,
+    "n_selecionados": 5,
+    "tempo_tela": 5
+  },
+  {
+    "n": "1000000",
+    "k": "4",
+    "time": 3.8113639000002877,
+    "n_selecionados": 6,
+    "tempo_tela": 24
+  },
+  {
+    "n": "1000000",
+    "k": "6",
+    "time": 4.132747999996354,
+    "n_selecionados": 8,
+    "tempo_tela": 16
+  },
+  {
+    "n": "1000000",
+    "k": "8",
+    "time": 3.7934467000013683,
+    "n_selecionados": 7,
+    "tempo_tela": 25
+  },
+  {
+    "n": "1000000",
+    "k": "10",
+    "time": 4.269881500003976,
+    "n_selecionados": 15,
+    "tempo_tela": 37
+  }
+]
