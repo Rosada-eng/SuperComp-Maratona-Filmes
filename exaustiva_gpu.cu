@@ -2,10 +2,12 @@
 #include <vector>
 #include <thrust/device_vector.h>
 #include <thrust/host_vector.h>
-#include <thurst/transform.h>
+#include <thrust/transform.h>
 #include <thrust/functional.h>
 
 using namespace std;
+
+#define MAXCATEGORIES 10
 
 struct Movie {
     int id;
@@ -52,19 +54,17 @@ void read_movies_booking(int size, vector<Movie> &book) {
     }
 }
 
-void get_exhibition_time(thrust::host_vector<int> &target, vector<Movie> &movies) {
+int get_exhibition_time(Movie movie) {
     /**
      * Recebe um vetor de inteiros target a ser preenchido com os horários de exibição
      * Recebe um vetor de filmes movies
      */
-    for (int i = 0; i < movies.size(); i++) {
-        exhibition_time = 0;
-        for (int j = movies[i].start; j <= movies[i].end; j++) {
-            exhibition_time |= (1 << j);
-        }
-
-        target[i] = exhibition_time;
+    int exhibition_time = 0;
+    for (int j = movie.start; j <= movie.end; j++) {
+        exhibition_time |= (1 << j);
     }
+
+    return exhibition_time;
 }
 
 struct count_watched_movies {
@@ -94,7 +94,10 @@ struct count_watched_movies {
     int operator()(const int &allocation) 
     {
         int watched_movies_count = 0;
-        int categories_watched[k] = {0};
+        int categories_watched[MAXCATEGORIES];
+        for (int i = 0; i < MAXCATEGORIES; i++) {
+            categories_watched[i] = 0;
+        }
         int available_exhibition_time = 0;
 
         // para cada um dos filmes indicados como 1 (a assistir), checa se é possível assistir
@@ -117,7 +120,7 @@ struct count_watched_movies {
             }
         }
 
-        return watched_movies;
+        return watched_movies_count;
     }
 
 };
@@ -136,19 +139,20 @@ int main(int argc, char* argv[]){
     // Lê os filmes e os armazena em um vetor
     vector<Movie> movies(n);
 
-
     // Vamos criar alguns vetores: Categoria e Horários de Exibição
 
     thrust::host_vector<int> h_categories(n);
     thrust::host_vector<int> h_exhibition_time(n);
 
     // preenche o vetor h_exhibition com um inteiro que representa o binário de horas em que o filme é exibido
-    get_exhibition_time(h_exhibition_time, movies);
+    for (int i=0; i<n; i++){
+        h_exhibition_time[i] = get_exhibition_time(movies[i]);
+    }
 
     // Vamos obter um vetor de inteiros, cuja transformação em bits representa cada filme a ser assistido
     
     thrust::device_vector<int> d_allocations(pow(2, n));
-    thurst::sequence(d_allocations.begin(), d_allocations.end());
+    thrust::sequence(d_allocations.begin(), d_allocations.end());
 
     // Vamos transformar os vetores para GPU
     thrust::device_vector<int> d_categories = h_categories;
@@ -171,7 +175,7 @@ int main(int argc, char* argv[]){
 
     int max_watched_movies = thrust::reduce(d_allocations.begin(), d_allocations.end(), 0, thrust::maximum<int>());
 
-    cout << "Máximo de filmes assistidos: " max_watched_movies << endl;
+    cout << "Máximo de filmes assistidos: " << max_watched_movies << endl;
 
 
     return 0;
