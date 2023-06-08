@@ -1,5 +1,6 @@
 #include <bitset>
 #include <cmath>
+#include <fstream>
 #include <iostream>
 #include <omp.h>
 #include <vector>
@@ -96,7 +97,7 @@ int main(int argc, char *argv[]) {
     // }
 
     long long int all_combinations_size = pow(2, n);
-    cout << "all_combinations_size: " << all_combinations_size << endl;
+    // cout << "all_combinations_size: " << all_combinations_size << endl;
 
     //! problema: Criar um vetor do tamanho de bilhões!
     // vector<Result> movies_watched_amount;
@@ -175,33 +176,35 @@ int main(int argc, char *argv[]) {
     // }
 
     // DEBUG -- imprime a combinação com a maior quantidade de filmes assistidos
-    cout << "idx Combinação com maior quantidade de filmes assistidos: " << idx_max_combination << endl;
+    // cout << "idx Combinação com maior quantidade de filmes assistidos: " << idx_max_combination << endl;
 
     // DEBUG -- imprime a quantidade de filmes assistidos
-    cout << "Quantidade de filmes assistidos: " << max_movies_amount << endl;
+    // "Quantidade de filmes assistidos: "
+    cout << max_movies_amount << endl;
+
+    bitset<NMAX> combination(idx_max_combination);
 
     // DEBUG -- imprime os filmes assistidos
-    cout << "Filmes assistidos: ";
-    bitset<NMAX> combination(idx_max_combination);
-    for (int i = 0; i < n; i++) {
-        if (combination[i] == 1) {
-            cout << book[i].id << " ";
-        }
-    }
-    cout << endl;
+    // cout << "Filmes assistidos: ";
+    // for (int i = 0; i < n; i++) {
+    //     if (combination[i] == 1) {
+    //         cout << book[i].id << " ";
+    //     }
+    // }
+    // cout << endl;
 
     // // DEBUG -- imprime a quantidade de filmes assistidos de cada categoria
-    cout << "Quantidade de filmes assistidos de cada categoria: ";
-    vector<int> current_categories_watched(k, 0);
-    for (int i = 0; i < n; i++) {
-        if (combination[i] == 1) {
-            current_categories_watched[book[i].category]++;
-        }
-    }
-    for (int i = 0; i < k; i++) {
-        cout << current_categories_watched[i] << " ";
-    }
-    cout << endl;
+    // cout << "Quantidade de filmes assistidos de cada categoria: ";
+    // vector<int> current_categories_watched(k, 0);
+    // for (int i = 0; i < n; i++) {
+    //     if (combination[i] == 1) {
+    //         current_categories_watched[book[i].category]++;
+    //     }
+    // }
+    // for (int i = 0; i < k; i++) {
+    //     cout << current_categories_watched[i] << " ";
+    // }
+    // cout << endl;
 
     // // DEBUG -- imprime as horas ocupadas assistindo filme
     bitset<DAYHOURS> sessions(0);
@@ -210,37 +213,38 @@ int main(int argc, char *argv[]) {
             sessions |= book[i].time;
         }
     }
-    cout << "Horas ocupadas assistindo filme: ";
+    // "Horas ocupadas assistindo filme: "
+
     cout << sessions.count() << endl;
-    cout << sessions << endl;
+    // cout << sessions << endl;
 
     // DEBUG -- imprime os filmes assistidos com horário de início e fim
-    cout << "Filmes assistidos com horário de início e fim: " << endl;
-    for (int i = 0; i < n; i++) {
-        if (combination[i] == 1) {
-            cout << book[i].id << "- ";
+    // cout << "Filmes assistidos com horário de início e fim: " << endl;
+    // for (int i = 0; i < n; i++) {
+    //     if (combination[i] == 1) {
+    //         cout << book[i].id << "- ";
 
-            // find start time
-            int start_time = 0;
-            for (int j = 0; j < DAYHOURS; j++) {
-                if (book[i].time[j] == 1) {
-                    start_time = j;
-                    break;
-                }
-            }
+    //         // find start time
+    //         int start_time = 0;
+    //         for (int j = 0; j < DAYHOURS; j++) {
+    //             if (book[i].time[j] == 1) {
+    //                 start_time = j;
+    //                 break;
+    //             }
+    //         }
 
-            // find end time
-            int end_time = 0;
-            for (int j = DAYHOURS - 1; j >= 0; j--) {
-                if (book[i].time[j] == 1) {
-                    end_time = j;
-                    break;
-                }
-            }
+    //         // find end time
+    //         int end_time = 0;
+    //         for (int j = DAYHOURS - 1; j >= 0; j--) {
+    //             if (book[i].time[j] == 1) {
+    //                 end_time = j;
+    //                 break;
+    //             }
+    //         }
 
-            cout << start_time << " > " << end_time << endl;
-        }
-    }
+    //         cout << start_time << " > " << end_time << endl;
+    //     }
+    // }
 
     return 0;
 }

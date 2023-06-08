@@ -124,10 +124,10 @@ int main(int argc, char *argv[]) {
     cin >> n;
     cin >> k;
 
-    string filename = argv[1];
+    // string filename = argv[1];
 
-    ofstream inputFile;
-    inputFile.open(filename);
+    // ofstream cout;
+    // cout.open(filename);
 
     vector<int> categories_max_size;
     categories_max_size.reserve(k);
@@ -138,12 +138,12 @@ int main(int argc, char *argv[]) {
         categories_max_size.push_back(max_size);
     }
 
-    inputFile << "max_by_category: ";
-    for (int i = 0; i < k; i++) {
-        inputFile << categories_max_size[i] << " ";
-    }
+    // cout << "max_by_category: ";
+    // for (int i = 0; i < k; i++) {
+    //     cout << categories_max_size[i] << " ";
+    // }
 
-    inputFile << endl;
+    // cout << endl;
 
     vector<int> movies_booked;
     vector<int> categories_booked;
@@ -189,17 +189,23 @@ int main(int argc, char *argv[]) {
         }
     }
 
+    // for (uint i = 0; i < movies_booked.size(); i++) {
+    //     cout << movies_booked[i] << " ";
+    // }
+
+    // Qtd. total
+    cout << movies_booked.size() << endl;
+
+    // calcula tempo de tela
+    int total_time = 0;
     for (uint i = 0; i < movies_booked.size(); i++) {
-        inputFile << movies_booked[i] << " ";
+        total_time += book[movies_booked[i]].end - book[movies_booked[i]].start + 1;
     }
 
-    inputFile << endl
-              << "total: " << movies_booked.size() << endl;
+    // Tempo de Tela
+    cout << total_time << endl;
 
     // TODO: implementar um mapa com os horários alocados para filmes
 
-    inputFile << endl;
-
-    inputFile.close();
     return 0;
 }

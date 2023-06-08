@@ -1,4 +1,5 @@
 #include <iostream>
+#include <fstream>
 #include <vector>
 #include <thrust/device_vector.h>
 #include <thrust/host_vector.h>
@@ -178,9 +179,27 @@ int main(int argc, char* argv[]){
         )
     );
 
-    int max_watched_movies = thrust::reduce(d_allocations.begin(), d_allocations.end(), 0, thrust::maximum<int>());
+    auto max_watched_iter = thrust::max_element(d_allocations.begin(), d_allocations.end());
 
-    cout << "Máximo de filmes assistidos: " << max_watched_movies << endl;
+    int max_index = thrust::distance(d_allocations.begin(), max_watched_iter);
+
+    int max_value = d_allocations[max_index];
+
+    // calcular o tempo de tela
+    int watched_movie_time = 0;
+    for (int i = 0; i < n; i++) {
+        if (max_index & (1 << i)) {
+            watched_movie_time += movies[i].end - movies[i].start + 1;
+        }
+    }
+
+
+
+    // Quantidade máxima de filmes assistidos
+    cout << max_value << endl;
+    // Tempo de tela maximo
+    cout << watched_movie_time << endl;
+
 
 
     return 0;
