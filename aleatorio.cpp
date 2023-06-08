@@ -1,6 +1,7 @@
 #include <algorithm>
 #include <cstdlib>
 #include <ctime>
+#include <fstream>
 #include <iomanip>
 #include <iostream>
 #include <random>
@@ -115,13 +116,18 @@ bool is_movie_available(vector<int> &movies_booked, vector<int> &categories_book
     return false;
 }
 
-int main() {
+int main(int argc, char *argv[]) {
     vector<Movie> book;
     int n = 0;
     int k = 0;
 
     cin >> n;
     cin >> k;
+
+    string filename = argv[1];
+
+    ofstream inputFile;
+    inputFile.open(filename);
 
     vector<int> categories_max_size;
     categories_max_size.reserve(k);
@@ -132,12 +138,12 @@ int main() {
         categories_max_size.push_back(max_size);
     }
 
-    cout << "max_by_category: ";
+    inputFile << "max_by_category: ";
     for (int i = 0; i < k; i++) {
-        cout << categories_max_size[i] << " ";
+        inputFile << categories_max_size[i] << " ";
     }
 
-    cout << endl;
+    inputFile << endl;
 
     vector<int> movies_booked;
     vector<int> categories_booked;
@@ -184,14 +190,16 @@ int main() {
     }
 
     for (uint i = 0; i < movies_booked.size(); i++) {
-        cout << movies_booked[i] << " ";
+        inputFile << movies_booked[i] << " ";
     }
 
-    cout << endl
-         << "total: " << movies_booked.size() << endl;
+    inputFile << endl
+              << "total: " << movies_booked.size() << endl;
 
     // TODO: implementar um mapa com os horários alocados para filmes
 
-    cout << endl;
+    inputFile << endl;
+
+    inputFile.close();
     return 0;
 }
