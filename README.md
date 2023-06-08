@@ -16,4 +16,6 @@ Saída: Um inteiro representando o número máximo de filmes que podem ser assis
 
 # Relatório Parcial
 
-[Relatório Parcial](https://github.com/Rosada-eng/SuperComp-Maratona-Filmes/blob/main/Relatorio_Parcial.ipynb 'Link para o relatório parcial')
+[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/drive/1wU6rrBzSVX1V0haragupyBqzVe6ncRpX?usp=sharing)
+
+[![Jupyter Notebook](https://mybinder.org/badge_logo.svg "Jupyter Notebook")](https://github.com/Rosada-eng/SuperComp-Maratona-Filmes/blob/main/Relatorio_Final.ipynb)
