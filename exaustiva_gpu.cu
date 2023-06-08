@@ -4,6 +4,7 @@
 #include <thrust/host_vector.h>
 #include <thrust/transform.h>
 #include <thrust/functional.h>
+#include <thrust/copy.h>
 
 using namespace std;
 
@@ -16,14 +17,7 @@ struct Movie {
     int category;
 };
 
-void read_max_categories_amount(int k, vector<int> &cat_max_size) {
 
-    for (int i = 0; i < k; i++) {
-        int max_size = 0;
-        cin >> max_size;
-        cat_max_size.push_back(max_size);
-    }
-}
 
 void read_movies_booking(int size, vector<Movie> &book) {
     /**
@@ -54,7 +48,7 @@ void read_movies_booking(int size, vector<Movie> &book) {
     }
 }
 
-int get_exhibition_time(Movie movie) {
+long int get_exhibition_time(Movie movie) {
     /**
      * Recebe um vetor de inteiros target a ser preenchido com os horários de exibição
      * Recebe um vetor de filmes movies
@@ -72,7 +66,7 @@ struct count_watched_movies {
     int n;
     int k;
 
-    int *exhibition_time;
+    long int *exhibition_time;
     int *categories;
 
     int *categories_max_size;
@@ -80,7 +74,7 @@ struct count_watched_movies {
     count_watched_movies(
         int n_,
         int k_,
-        int *exhibition_time_,
+        long int *exhibition_time_,
         int *categories_,
         int *categories_max_size_) :
 
@@ -91,31 +85,35 @@ struct count_watched_movies {
         categories_max_size(categories_max_size_) {}
 
     __device__
-    int operator()(const int &allocation) 
+    int operator()(const int &allocation) const
     {
         int watched_movies_count = 0;
+
         int categories_watched[MAXCATEGORIES];
         for (int i = 0; i < MAXCATEGORIES; i++) {
             categories_watched[i] = 0;
         }
-        int available_exhibition_time = 0;
+
+        long int available_exhibition_time = 0;
 
         // para cada um dos filmes indicados como 1 (a assistir), checa se é possível assistir
         for (int i = 0; i < n; i++) {
+            // caso o filme tenha sido alocado (1), analisa validade
             if (allocation & (1 << i)) {
                 // checa se há disponibilidade de categoria
-                if (categories_watched[categories[i]] +1 <= categories_max_size[categories[i]]) {
+                if (categories_watched[categories[i]] < categories_max_size[categories[i]]) {
                     // checa se o horário de exibição está disponível
-                    if (!(available_exhibition_time & exhibition_time[i] != 0))  {
+                    long int has_override = available_exhibition_time & exhibition_time[i];
+                    if (has_override == 0)  {
                         watched_movies_count++;
                         categories_watched[categories[i]]++;
                         available_exhibition_time |= exhibition_time[i];
                     } else {
 
-                        return 0;
+                        return -1;
                     }
                 } else {
-                    return 0;
+                    return -2;
                 }
             }
         }
@@ -133,21 +131,28 @@ int main(int argc, char* argv[]){
     cin >> k;
 
     // Armazena o máximo de filmes para cada categoria
-    vector<int> categories_max_size(k, 0);
-    read_max_categories_amount(k, categories_max_size);
+    thrust::host_vector<int> h_categories_max_size(k, 0);
+    for (int i = 0; i < k; i++) {
+        int max_size = 0;
+        cin >> max_size;
+        h_categories_max_size[i] = max_size;
+    }
 
     // Lê os filmes e os armazena em um vetor
-    vector<Movie> movies(n);
+    vector<Movie> movies;
+    read_movies_booking(n, movies);
 
     // Vamos criar alguns vetores: Categoria e Horários de Exibição
 
     thrust::host_vector<int> h_categories(n);
-    thrust::host_vector<int> h_exhibition_time(n);
+    thrust::host_vector<long int> h_exhibition_time(n);
 
     // preenche o vetor h_exhibition com um inteiro que representa o binário de horas em que o filme é exibido
     for (int i=0; i<n; i++){
+        h_categories[i] = movies[i].category;
         h_exhibition_time[i] = get_exhibition_time(movies[i]);
     }
+
 
     // Vamos obter um vetor de inteiros, cuja transformação em bits representa cada filme a ser assistido
     
@@ -156,7 +161,8 @@ int main(int argc, char* argv[]){
 
     // Vamos transformar os vetores para GPU
     thrust::device_vector<int> d_categories = h_categories;
-    thrust::device_vector<int> d_exhibition_time = h_exhibition_time;
+    thrust::device_vector<long int> d_exhibition_time = h_exhibition_time;
+    thrust::device_vector<int> d_categories_max_size = h_categories_max_size;
 
     // Vamos aplicar a função de verificação para testar cada possibilidade, se é válida e contar quantos filmes foram assistidos.
     thrust::transform(
@@ -168,10 +174,9 @@ int main(int argc, char* argv[]){
             k,
             thrust::raw_pointer_cast(d_exhibition_time.data()),
             thrust::raw_pointer_cast(d_categories.data()),
-            thrust::raw_pointer_cast(categories_max_size.data())
+            thrust::raw_pointer_cast(d_categories_max_size.data())
         )
     );
-
 
     int max_watched_movies = thrust::reduce(d_allocations.begin(), d_allocations.end(), 0, thrust::maximum<int>());
 
